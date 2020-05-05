@@ -625,7 +625,7 @@ class ChatBot extends Component {
         <HeaderTitle className="rsc-header-title">{headerTitle}</HeaderTitle>
         {floating && (
           <HeaderIcon className="rsc-header-close-button" onClick={() => this.toggleChatBot(false)}>
-            <CloseIcon /><Link className="back-link" to="https://digitalizeme.us" >Voltar ao site</ Link>
+            <CloseIcon />
           </HeaderIcon>
         )}
       </Header>
