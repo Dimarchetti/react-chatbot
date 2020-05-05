@@ -625,7 +625,7 @@ class ChatBot extends Component {
         <HeaderTitle className="rsc-header-title">{headerTitle}</HeaderTitle>
         {floating && (
           <HeaderIcon className="rsc-header-close-button" onClick={() => this.toggleChatBot(false)}>
-            <CloseIcon />
+            <CloseIcon /><Link className="back-link" to="https://digitalizeme.us" >Voltar ao site</ Link>
           </HeaderIcon>
         )}
       </Header>
@@ -794,7 +794,7 @@ ChatBot.defaultProps = {
   footerStyle: {},
   handleEnd: undefined,
   headerComponent: undefined,
-  headerTitle: 'Chat',
+  headerTitle: 'Ariela',
   height: '520px',
   hideBotAvatar: false,
   hideHeader: false,
@@ -802,11 +802,11 @@ ChatBot.defaultProps = {
   hideUserAvatar: false,
   inputStyle: {},
   opened: undefined,
-  placeholder: 'Type the message ...',
+  placeholder: 'Digite a mensagem ...',
   inputAttributes: {},
   recognitionEnable: false,
   recognitionLang: 'en',
-  recognitionPlaceholder: 'Listening ...',
+  recognitionPlaceholder: 'Escutando ...',
   speechSynthesis: {
     enable: false,
     lang: 'en',

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ChatBot from 'react-simple-chatbot';
+import ChatBot from '../../lib/ChatBot';
+//import ChatBot from 'react-simple-chatbot';
 
 class Review extends Component {
   constructor(props) {
@@ -94,7 +95,7 @@ class SimpleForm extends Component {
           {
             id: 'ans2',
             options: [
-              { value: '1', label: 'Sim.', trigger: 'help3' },
+              { value: '1', label: 'Sim', trigger: 'help3' },
               { value: '2', label: 'Não', trigger: 'help3' },              
             ],
           },
@@ -107,21 +108,217 @@ class SimpleForm extends Component {
           {
             id: 'ans3',
             options: [
-              { value: '1', label: 'Sim.', trigger: 'help4' },
+              { value: '1', label: 'Sim', trigger: 'help4' },
               { value: '2', label: 'Não', trigger: 'help5' },              
             ],
           },
           {
             id: 'help4',
-            message: `Beleza! Agora me diz outra coisa, seu negócio ou serviço é registrado?`,
-            trigger: 'ans3',
+            message: `Qual o registro do seu negócio (CNPJ)?`,
+            trigger: 'cnpj',
+          },
+          {
+            id: 'cnpj',
+            user: true,
+            trigger: 'help4-1',
           },
           {
             id: 'help5',
-            message: `Beleza! Agora me diz outra coisa, seu negócio
-            ou serviço é registrado?`,
-            trigger: 'ans3',
+            message: `Informe o nome do seu negócio? (Ex: Padaria do Sr. João)`,
+            trigger: 'business',
           },
+          {
+            id: 'business',
+            user: true,
+            trigger: 'help5-1',
+          },
+          {
+            id: 'help4-1',
+            message: `Ok. Seu negócio está registrado no Google Maps?`,
+            trigger: 'ans4',
+          },
+          {
+            id: 'help5-1',
+            message: `Selecione entre as opções qual o setor do se negócio`,
+            trigger: 'ans5',
+          },
+          {
+            id: 'ans4',
+            options: [
+              { value: '1', label: 'Sim', trigger: 'help6-1' },
+              { value: '2', label: 'Não', trigger: 'help6-1' },              
+            ],
+          },
+          {
+            id: 'ans5',
+            options: [
+              { value: '1', label: 'Comércio', trigger: 'help6' },
+              { value: '2', label: 'Indústria', trigger: 'help6' },              
+              { value: '3', label: 'Serviços', trigger: 'help6' },              
+            ],
+          },
+          {
+            id: 'help6-1',
+            message: `Seu negócio possui site ou Facebook?`,
+            trigger: 'ans6-1',
+          },
+          {
+            id: 'ans6-1',
+            options: [
+              { value: '1', label: 'Sim', trigger: 'help7-1' },
+              { value: '2', label: 'Não', trigger: 'help7-1' },              
+            ],
+          },
+          {
+            id: 'help7-1',
+            message: `Como vc classificaria seu nível ou de seus 
+            funcionários em relação ao conhecimento de internet?`,
+            trigger: 'ans7-1',
+          },
+          {
+            id: 'ans7-1',
+            options: [
+              { value: '1', label: 'Muito Bom =D', trigger: 'help8-1' },
+              { value: '2', label: 'Mais ou Menos Bom =)', trigger: 'help8-1' },              
+              { value: '3', label: 'Não tão Bom =S', trigger: 'help8-1' },              
+            ],
+          },
+          {
+            id: 'help8-1',
+            message: `Você possui e-mail?`,
+            trigger: 'ans8-1',
+          },
+          {
+            id: 'ans8-1',
+            options: [
+              { value: '1', label: 'Sim', trigger: 'help9-1' },
+              { value: '2', label: 'Não', trigger: 'help9-2' },              
+            ],
+          },
+          {
+            id: 'help9-1',
+            message: `Por favor, informe seu e-mail.`,
+            trigger: 'email',
+          },
+          {
+            id: 'email',
+            user: true,
+            trigger: 'help10-1',
+          },
+          {
+            id: 'help9-2',
+            message: `Por favor, informe seu Whatsapp.`,
+            trigger: 'help10-2',
+          },
+          {
+            id: 'whatsapp',
+            user: true,
+            trigger: 'help10-2',
+          },
+          {
+            id: 'help10-1',
+            message: `Enviamos um email {previousValue} com uma senha temporária
+             para que você tenha acesso total a nossa plataforma de ajuda ao empreendedor. Enquanto isso, dê uma olhada
+             no link abaixo que contém algumas informações sobre o seu perfil empreendedor.
+             [link clicável com perfil do emrpeendedor]`,
+            trigger: 'end-message',
+          },
+          {
+            id: 'help10-2',
+            message: `Enviamos uma mensagem para o Whatsapp {previousValue} com uma senha temporária
+            para que você tenha acesso total a nossa plataforma de ajuda ao empreendedor. Enquanto isso, dê uma olhada
+            no link abaixo que contém algumas informações sobre o seu perfil empreendedor.
+            [link clicável com perfil do emrpeendedor]`,
+            trigger: 'end-message',
+          },
+          //Fluxo 2
+          {
+            id: 'help6',
+            message: `Selecione entre as opções qual o setor do seu negócio`,
+            trigger: 'ans6',
+          },
+          {
+            id: 'ans6',
+            options: [
+              { value: '1', label: 'Professor Autônomo.', trigger: 'help8' },
+              { value: '2', label: 'Cabelereiro', trigger: 'help8' },              
+              { value: '3', label: 'Manicure', trigger: 'help8' },              
+            ],
+          },
+          {
+            id: 'help8',
+            message: `Seu negócio possui site ou Facebook?`,
+            trigger: 'ans8',
+          },
+          {
+            id: 'ans8',
+            options: [
+              { value: '1', label: 'Sim', trigger: 'help9' },
+              { value: '2', label: 'Não', trigger: 'help9' },              
+            ],
+          },
+          {
+            id: 'help9',
+            message: `Como você classificaria seu nível ou de seus 
+            funcionários em relação ao conhecimento de internet?`,
+            trigger: 'ans9',
+          },
+          {
+            id: 'ans9',
+            options: [
+              { value: '1', label: 'Muito Bom =D', trigger: 'help10' },
+              { value: '2', label: 'Mais ou Menos Bom =)', trigger: 'help10' },              
+              { value: '3', label: 'Não tão Bom =S', trigger: 'help10' },              
+            ],
+          },
+          {
+            id: 'help10',
+            message: `Você possui e-mail?`,
+            trigger: 'ans10',
+          },
+          {
+            id: 'ans10',
+            options: [
+              { value: '1', label: 'Sim', trigger: 'help11' },
+              { value: '2', label: 'Não', trigger: 'help12' },              
+            ],
+          },
+          {
+            id: 'help11',
+            message: `Por favor, informe seu e-mail.`,
+            trigger: 'email2',
+          },
+          {
+            id: 'email2',
+            user: true,
+            trigger: 'help13',
+          },
+          {
+            id: 'help12',
+            message: `Por favor, informe seu Whatsapp.`,
+            trigger: 'whatsapp2',
+          },
+          {
+            id: 'whatsapp2',
+            user: true,
+            trigger: 'help14',
+          },
+          {
+            id: 'help13',
+            message: `Enviamos um email para você com uma senha temporária
+             para que você tenha acesso total a nossa plataforma de ajuda ao empreendedor. Enquanto isso, dê uma olhada
+             no link abaixo que contém algumas informações sobre o seu perfil empreendedor.
+             [link clicável com perfil do emrpeendedor]`,
+            trigger: 'end-message',
+          },
+          {
+            id: 'help14',
+            message: `Enviamos uma mensagem para o seu Whatsapp com uma senha temporária
+            para que você tenha acesso total a nossa plataforma de ajuda ao empreendedor. Enquanto isso, dê uma olhada
+            no link abaixo que contém algumas informações sobre o seu perfil empreendedor.
+            [link clicável com perfil do emrpeendedor]`,
+            trigger: 'end-message',
+          },  
           {
             id: 'validator',
             user: true,
@@ -191,7 +388,7 @@ class SimpleForm extends Component {
           },
           {
             id: 'end-message',
-            message: 'Thanks! Your data was submitted successfully!',
+            message: `Obrigado! Seu negócio está mais próximo de ser digital do que antes. {https://wdots.com.br}`,
             end: true,
           },
         ]}
